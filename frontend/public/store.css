@@ -1,0 +1,268 @@
+/* Store Page Custom Additions */
+
+.store-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)),
+        url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 90px 20px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.store-hero h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.store-hero p {
+    font-size: 1.3rem;
+    opacity: .9;
+}
+
+.store-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.store-btn {
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 2px solid var(--primary-green);
+    background: white;
+    color: var(--primary-green);
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.store-btn:hover,
+.store-btn.active {
+    background: var(--primary-green);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+    padding: 0 20px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.12);
+}
+
+.product-img {
+    height: 220px;
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.product-card:hover img {
+    transform: scale(1.07);
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--light-green);
+    margin-bottom: 15px;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.product-actions a {
+    flex: 1 1 0;
+    padding: 10px 14px;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.product-actions .buy-now {
+    background: var(--accent-green);
+    color: #111;
+}
+
+.product-actions .buy-now:hover {
+    background: #00c853;
+}
+
+.product-actions .add-cart {
+    background: var(--light-green);
+    color: white;
+}
+
+.product-actions .add-cart:hover {
+    background: var(--primary-green);
+}
+
+/* Footer styling */
+footer {
+    background: linear-gradient(to bottom, var(--primary-green), var(--dark-green));
+    color: white;
+    padding: 40px 0 10px 0;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+    width: 30%;
+    min-width: 280px;
+    margin-bottom: 20px;
+}
+
+.footer-container h3,
+.footer-container h4 {
+    margin-bottom: 10px;
+    color: #c8facd;
+}
+
+.footer-container p,
+.footer-container ul li a {
+    color: #e8f5e9;
+    font-size: 0.95rem;
+}
+
+.footer-center ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-center ul li a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-center ul li a:hover {
+    color: var(--accent-green);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #a5d6a7;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #e8f5e9;
+}
+
+/* ✔ MOBILE MENU FIX ADDED */
+.mobile-menu {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 240px;
+    height: 100%;
+    background: var(--dark-green);
+    padding: 30px 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+
+.mobile-nav ul {
+    margin-top: 40px;
+    list-style: none;
+}
+
+.mobile-nav ul li {
+    margin-bottom: 20px;
+}
+
+.mobile-nav ul li a {
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.close-menu {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

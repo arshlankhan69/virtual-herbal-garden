@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tulsi - Plant Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/learnmore.css">
+   
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h2>Virtual Herbal Garden</h2>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/home/new">Home</a></li>
+                    <li><a href="/store/new">Store</a></li>
+                    <li><a href="/forum/new">Forum</a></li>
+                </ul>
+
+                <i class="fas fa-bars" id="hamburger"></i>
+                <i class="fas fa-times" id="close-icon"></i>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PLANT CONTENT -->
+    
+    <% if (plant) { %>
+        <% var items = Array.isArray(plant) ? plant : [plant]; %>
+        <% for (var _i = 0; _i < items.length; _i++) { var item = items[_i]; %>
+
+        <div class="container">
+            
+            <a class="back-btn" href="javascript:history.back()">← Back</a>
+            <h1>🌿 <%= item.plantName || 'Unnamed plant' %></h1>
+            
+            <!-- ⭐ 3D MODEL VIEWER ADDED HERE ⭐  -->
+             <!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+            
+            <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+            auto-rotate camera-controls ar 
+            style="width:100%; height:350px; background:#d6f5d6; border-radius:15px; margin:20px 0;">
+        </model-viewer>  -->
+
+        <div class="model"  auto-rotate camera-controls ar 
+            style="width:100%; height:350px; background:#d6f5d6; border-radius:15px; margin:20px 0;">
+            <%- item.iframe %>
+        </div>
+        
+
+        
+        <dl>
+            <dt>Common Name</dt> <dd> <%= item.commonName%> </dd>
+            <dt>Scientific Name</dt> <dd> <%= item.scientificName%> </dd>
+            <dt>Origin</dt> <dd><%= item.origin %></dd>
+            <dt>Plant Type</dt> <dd><%= item.plantType %></dd>
+            <dt>Appearance</dt> <dd><%= item.appearance %></dd>
+            <dt>Propagation Methods</dt> <dd><%= item.propagationMethods%></dd>
+            <dt>Common Pests And Diseases</dt> <dd><%= item.commonPestsAndDiseases %></dd>
+            <dt>PlantUses</dt> <dd><%= item.PlantUses %></dd>
+            <dt>Precautions</dt> <dd><%= item.Precautions %></dd>
+            <dt>Ecological Importance</dt> <dd><%= item.EcologicalImportance %></dd>
+            <dt>Seasonal Calendar</dt> <dd><%= item.SeasonalCalendar %></dd>
+            <dt>Growth Statics</dt> <dd><%= item.GrowthStatics %></dd>
+            <dt>Scientific Research</dt> <dd><%= item. ScientificRearch %></dd>
+            <dt>Soil PH Preference</dt> <dd><%= item.SoilPHPreference %></dd>
+            <dt>Watering Needs</dt> <dd><%= item.WateringNeeds %></dd>
+            <dt>Repotting Information</dt> <dd><%= item.RepottingInformation%></dd>
+            <dt>More Information</dt> <dd><%= item.read %></dd>
+        </dl>
+    </div>
+
+        <% } %>
+    <% } %>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3>Virtual Herbal Garden</h3>
+                <p>Learn, grow, explore nature's medicine.</p>
+            </div>
+
+            <div class="footer-center">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/store">Store</a></li>
+                    <li><a href="#">Forum</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-right">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> herbalgaarden@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9792622196</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Virtual Herbal Garden. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- JS -->
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const closeIcon = document.getElementById("close-icon");
+        const navLinks = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.style.display = "flex";
+            hamburger.style.display = "none";
+            closeIcon.style.display = "block";
+        });
+
+        closeIcon.addEventListener("click", () => {
+            navLinks.style.display = "none";
+            closeIcon.style.display = "none";
+            hamburger.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>

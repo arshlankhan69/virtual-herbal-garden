@@ -1,0 +1,74 @@
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3fff0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .success-icon {
+            font-size: 60px;
+            text-align: center;
+            color: #4caf50;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+            color: #27632a;
+        }
+
+        .message {
+            text-align: center;
+            margin: 15px 0 30px;
+            color: #555;
+        }
+
+        .order-details {
+            padding: 20px;
+            background: #fafff7;
+            border: 1px solid #c9e6c4;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .order-details h3 {
+            margin-top: 0;
+            color: #27632a;
+        }
+
+        .order-details p {
+            margin: 5px 0;
+            color: #444;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            background: #4caf50;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #3f8f45;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }

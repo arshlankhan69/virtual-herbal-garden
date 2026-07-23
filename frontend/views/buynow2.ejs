@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Order Confirmation - Herbal Garden</title>
+    <link rel="stylesheet" href="/buynow2.css">
+</head>
+<body>
+   
+    <div class="container">
+        <div class="success-icon">✔</div>
+        <h1>Order Successful!</h1>
+        <p class="message">Thank you for growing with us! Your herbal garden starts today.</p>
+
+        <div class="order-details">
+            <h3>Your Order</h3>
+            <p><strong>Item:</strong> <%= item.plantName %></p>
+            <p><strong>Order ID:</strong> <%= item._id %></p>
+            <p><strong>Estimated Delivery:</strong> 3–5 Business Days</p>
+        </div>
+   
+
+        <a href="/store" class="btn">Continue Shopping</a>
+
+        <footer>
+            &copy; 2025 Virtual Herbal Garden. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>

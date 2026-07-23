@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store – Virtual Herbal Garden</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/store.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h1>Virtual Herbal Garden</h1>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#collection">Collection</a></li>
+                    <li><a href="/store" class="active">Store</a></li>
+                    <li><a href="/#features">Features</a></li>
+                    <!-- <li><a href="/#about">About</a></li> -->
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <div class="close-menu"><i class="fas fa-times"></i></div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#collection">Collection</a></li>
+            <li><a href="/store">Store</a></li>
+            <li><a href="/#features">Features</a></li>
+            <!-- <li><a href="/#about">About Us</a></li> -->
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Store Hero -->
+    <section class="store-hero">
+        <h2>Herbal Store</h2>
+        <p>Buy plants, seeds, powders, oils, gardening tools & pesticides.</p>
+    </section>
+
+    <!-- Filters -->
+    <section class="store-filters">
+        <button class="store-btn active" data-category="all">All</button>
+        <button class="store-btn" data-category="plant">Plants</button>
+        <button class="store-btn" data-category="seed">Seeds</button>
+        <button class="store-btn" data-category="powder">Herbal Powders</button>
+        <button class="store-btn" data-category="oil">Essential Oils</button>
+        <button class="store-btn" data-category="tool">Gardening Tools</button>
+        <button class="store-btn" data-category="pesticide">Pesticides</button>
+        <button class="store-btn" data-category="soil">Soil & Mixes</button>
+        <button class="store-btn" data-category="starter">Seed Starters</button>
+    </section>
+
+    <!-- Product Grid -->
+    <main>
+        <div class="product-grid">
+
+          
+            <%  for(let product of products) { %>
+            <div class="product-card" data-category="<%= product.type %>">
+                <div class="product-img">
+                    <img src="<%= product.image %>" alt="<%= product.plantName %> Plant">
+                </div>
+                <div class="product-info">
+                    <h3><%= product.plantName %> Plant</h3>
+                    <p><%= product.content %></p>
+                    <div class="price">₹<%= product.price %></div>
+                    <div class="product-actions">
+                        <a href="/store/form/<%= product._id %>" class="buy-now">Buy Now</a>
+                        <a href="#" class="add-cart">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+           <%  } %>
+
+            
+            
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-left">
+                <h3>Virtual Herbal Garden</h3>
+                <p>Your trusted source for herbal knowledge, products, and natural wellness.</p>
+            </div>
+
+            <div class="footer-center">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/store">Store</a></li>
+                    <li><a href="/forum">Forum</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-right">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> herbalgaarden@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9792622196</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Virtual Herbal Garden. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const storeBtns = document.querySelectorAll('.store-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        storeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                storeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const cat = btn.getAttribute('data-category');
+
+                productCards.forEach(card => {
+                    if (cat === "all" || card.getAttribute('data-category') === cat) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+
+        // Mobile Menu System
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const mobileNav = document.querySelector(".mobile-nav");
+        const closeMenu = document.querySelector(".close-menu");
+
+        mobileMenu.addEventListener("click", () => {
+            mobileNav.style.display = "block";
+        });
+
+        closeMenu.addEventListener("click", () => {
+            mobileNav.style.display = "none";
+        });
+    </script>
+
+</body>
+</html>

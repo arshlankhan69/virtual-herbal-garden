@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Forum – Virtual Herbal Garden</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/forum.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h2>Virtual Herbal Garden</h2>
+            </div>
+
+            <!-- MOBILE NAV -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/store">Store</a></li>
+                    <li><a href="/forum">Forum</a></li>
+                </ul>
+
+                <i class="fas fa-bars" id="hamburger"></i>
+                <i class="fas fa-times" id="close-icon"></i>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="forum-hero">
+        <h1>Herbal Discussion Forum</h1>
+        <p>Share knowledge • Ask questions • Learn together</p>
+    </section>
+
+    <!-- FORUM CONTENT -->
+    <div class="forum-container">
+
+        
+
+   <% for(let post of  forumPosts){ %>
+                    <div class="forum-card">
+                <h3><%= post.title %></h3>
+                
+                <p>
+                            <p><%= post.content || post.question %></p>
+                            <p class="post-meta">
+                                <strong>Asked by:</strong> <%= post.author || 'Anonymous' %>
+                                <% if (post.tags) { %>
+                                    &nbsp;|&nbsp; <strong>Tags:</strong>
+                                    <% if (Array.isArray(post.tags)) { %>
+                                        <%= post.tags.join(', ') %>
+                                    <% } else { %>
+                                        <%= post.tags %>
+                                    <% } %>
+                                <% } %>
+                            </p>
+            
+                </p>
+
+                <div class="forum-actions">
+                    <div class="action-left">
+                        <button class="action-button reply-btn">Reply</button>
+                        <button class="action-button view-btn">View</button>
+                    </div>
+                    <div class="action-right">
+                        <form action="/forum/<%= post._id %>?_method=DELETE" method="post" style="display:inline;">
+
+                            <button class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+                </div>
+
+                <form class="reply-form" action="/forum/<%= post._id %>/reply" method="post">
+                    <textarea name="reply" placeholder="Write your reply..." required></textarea>
+                    <button type="submit" class="send-reply-btn">Post Reply</button>
+                </form>
+
+                <div class="replies<%= (post.replies && post.replies.length >= 3) ? ' scrollable' : '' %>">
+                    <% if (post.replies && post.replies.length) { %>
+                        <% post.replies.forEach(function(r){ %>
+                            <div class="reply">
+                                <%= typeof r === 'string' ? r : (r.content || r.text || r.reply || r.body || '') %>
+                                <% if (typeof r !== 'string' && (r.author || r.date)) { %>
+                                    <div class="reply-meta" style="font-size:0.85rem;color:#666;margin-top:6px;">
+                                        <% if (r.author) { %><strong><%= r.author %></strong><% } %>
+                                        <% if (r.date) { %> &nbsp; <small><%= r.date %></small><% } %>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </div>
+            </div>
+  <%  } %>
+   <form method="get" action="/forum/add">
+    <button  class="send-reply-btn">Ask your Query</button>
+   </form>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-left">
+                <h3>Virtual Herbal Garden</h3>
+                <p>Your trusted source for herbal knowledge, products, and natural wellness.</p>
+            </div>
+
+            <div class="footer-center">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/store">Store</a></li>
+                    <li><a href="/forum">Forum</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-right">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> herbalgaarden@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9792622196</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Virtual Herbal Garden. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+        /* MOBILE MENU */
+        const hamburger = document.getElementById("hamburger");
+        const closeIcon = document.getElementById("close-icon");
+        const navLinks = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.style.display = "flex";
+            hamburger.style.display = "none";
+            closeIcon.style.display = "block";
+        });
+
+        closeIcon.addEventListener("click", () => {
+            navLinks.style.display = "none";
+            closeIcon.style.display = "none";
+            hamburger.style.display = "block";
+        });
+
+        /* REPLY SYSTEM */
+        document.querySelectorAll(".reply-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const card = btn.closest('.forum-card');
+                const form = card.querySelector('.reply-form');
+                const textarea = form.querySelector('textarea[name="reply"]');
+                const isOpen = form.style.display === 'block' || form.classList.contains('open');
+
+                if (isOpen) {
+                    form.style.display = 'none';
+                    form.classList.remove('open');
+                } else {
+                    form.style.display = 'block';
+                    form.classList.add('open');
+                    textarea.focus();
+                }
+            });
+        });
+        document.querySelectorAll('.reply-form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const card = form.closest('.forum-card');
+                const textarea = form.querySelector('textarea[name="reply"]');
+                const replyText = textarea.value.trim();
+
+                if (!replyText) return;
+
+                const replyDiv = document.createElement('div');
+                replyDiv.classList.add('reply');
+                replyDiv.textContent = replyText;
+
+                const repliesContainer = card.querySelector('.replies');
+                repliesContainer.appendChild(replyDiv);
+
+                // If more than 3 replies, make the replies container scrollable
+                const repliesCount = repliesContainer.querySelectorAll('.reply').length;
+                if (repliesCount >= 3) {
+                    repliesContainer.classList.add('scrollable');
+                } else {
+                    repliesContainer.classList.remove('scrollable');
+                }
+
+                textarea.value = '';
+                form.style.display = 'none';
+                form.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>

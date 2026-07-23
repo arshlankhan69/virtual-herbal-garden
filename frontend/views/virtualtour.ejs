@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Tour - Virtual Herbal Garden</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h1>Virtual Herbal Garden</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/store">Store</a></li>
+                    <li><a href="/forum">Forum</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main style="max-width:1200px; margin:0 auto; padding: 40px 20px;">
+        <h2 class="section-title">Virtual Tour</h2>
+        <p style="text-align:center; color:#555; margin-bottom: 40px;">
+            Click on any plant to explore its interactive 3D model
+        </p>
+
+        <div class="collection-grid">
+            <% for(let item of plants){ %>
+                <a href="/learnmore/<%= item._id %>">
+                    <div class="collection-card">
+                        <div class="collection-image">
+                            <img src="<%= item.image %>" alt="<%= item.plantName %>">
+                        </div>
+                        <div class="collection-content">
+                            <h4><%= item.plantName %></h4>
+                            <p><%= item.commonName %></p>
+                        </div>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-bottom">
+            <p>&copy; 2025 Virtual Herbal Garden. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

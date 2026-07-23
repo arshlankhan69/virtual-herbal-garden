@@ -1,0 +1,436 @@
+/* SAME THEME VARIABLES */
+:root {
+    --primary-green: #2e7d32;
+    --light-green: #4caf50;
+    --dark-green: #1b5e20;
+    --accent-green: #00e676;
+    --background-light: #f1f8e9;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    background: var(--background-light);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+    color: var(--text-light);
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    animation: pulse 2s infinite;
+}
+/* SAME THEME VARIABLES */
+:root {
+    --primary-green: #2e7d32;
+    --light-green: #4caf50;
+    --dark-green: #1b5e20;
+    --accent-green: #00e676;
+    --background-light: #f1f8e9;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    background: var(--background-light);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+    color: var(--text-light);
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    animation: pulse 2s infinite;
+}
+
+/* NAVIGATION */
+nav {
+    position: relative;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: var(--text-light);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 15px;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--accent-green);
+}
+
+/* MOBILE NAVIGATION */
+#hamburger,
+#close-icon {
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    transition: var(--transition);
+}
+
+@media(max-width: 768px) {
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: var(--primary-green);
+        width: 200px;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 10px;
+        display: none;
+        box-shadow: var(--shadow);
+        animation: slideDown 0.3s ease;
+    }
+
+    #hamburger {
+        display: block;
+    }
+
+    #close-icon {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        display: none;
+    }
+
+    nav ul li {
+        margin-bottom: 15px;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* HERO */
+.forum-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=1600&q=80') center/cover;
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+}
+
+/* FORUM SECTION */
+.forum-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.forum-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.forum-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.forum-card h3 {
+    margin-bottom: 10px;
+    color: var(--primary-green);
+}
+
+.forum-card p {
+    color: #555;
+}
+
+/* Post metadata (author, tags) */
+.post-meta {
+    color: #666;
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+.forum-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.action-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.action-right {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.delete-btn {
+    background: #b71c1c;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+
+.delete-btn:hover {
+    background: #9e1414;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 520px) {
+    .forum-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .action-right {
+        align-self: flex-end;
+    }
+}
+
+.action-button {
+    background: var(--light-green);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.action-button:hover {
+    background: var(--primary-green);
+    transform: translateY(-3px);
+}
+
+/* REPLY BOX */
+.reply-box {
+    display: none;
+    margin-top: 15px;
+}
+
+.reply-box textarea {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    border: 2px solid var(--light-green);
+    padding: 10px;
+    resize: none;
+    font-size: 1rem;
+}
+
+/* Reply form (server-ready) - hidden by default and styled like the old reply box */
+.reply-form {
+    display: none;
+    margin-top: 15px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    border: 2px solid var(--light-green);
+    padding: 10px;
+    resize: none;
+    font-size: 1rem;
+}
+
+.send-reply-btn {
+    margin-top: 10px;
+    background: var(--accent-green);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.send-reply-btn:hover {
+    transform: translateY(-3px);
+    background: var(--primary-green);
+    color: white;
+}
+
+.reply {
+    background: #e9f5ec;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border-left: 4px solid var(--primary-green);
+    animation: fadeIn 0.3s ease;
+}
+
+/* When there are many replies, make the container scrollable */
+.replies.scrollable {
+    max-height: 220px; /* roughly fits ~3 replies depending on content */
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+/* Optional: nicer thin scrollbar for modern browsers */
+.replies.scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.replies.scrollable::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.replies.scrollable::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15);
+    border-radius: 8px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* FOOTER */
+footer {
+    background: linear-gradient(to bottom, var(--primary-green), var(--dark-green));
+    color: white;
+    padding: 40px 0 10px 0;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+    width: 30%;
+    min-width: 280px;
+    margin-bottom: 20px;
+}
+
+.footer-container h3,
+.footer-container h4 {
+    margin-bottom: 10px;
+    color: #c8facd;
+}
+
+.footer-container p,
+.footer-container ul li a {
+    color: #e8f5e9;
+    font-size: 0.95rem;
+}
+
+.footer-center ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-center ul li a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-center ul li a:hover {
+    color: var(--accent-green);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #a5d6a7;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #e8f5e9;
+}

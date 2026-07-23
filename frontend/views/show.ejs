@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Herbal Garden</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h1>Virtual Herbal Garden</h1>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="/store">Store</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <!-- <li><a href="#about">About</a></li> -->
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="/store">Store</a></li>
+            <li><a href="#features">Features</a></li>
+            <!-- <li><a href="#about">About</a></li> -->
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Discover the Healing Power of Nature</h2>
+            <p>Explore our virtual collection of medicinal plants and herbs with interactive 3D models and detailed
+                information</p>
+            <a href="#collection" class="cta-button">Explore Plants <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section" id="search">
+        <div class="search-container">
+            <h2>Find Your Herbal Remedies</h2>
+
+            <form action="/search" method="post">
+                <div class="search-bar">
+                    <input type="text" name="plantName" id="search-input" placeholder="Search for plants...">
+                    <button onclick="searchPlants()">Search</button>
+
+                </div>
+            </form>
+            <div class="button-group">
+                <!-- <button class="action-btn"><i class="fas fa-comments"></i  > Discussion Forum</button> -->
+                <a href="/forum"> <button class="action-btn"><i class="fas fa-comments"></i> Discussion
+                        Forum</button></a>
+                <button class="action-btn"><i class="fas fa-bookmark"></i> Book Mark</button>
+                <a href="/virtualtour">
+                    <button class="action-btn"><i class="fas fa-vr-cardboard"></i> Virtual Tour</button>
+                </a>
+                <button class="action-btn"><i class="fas fa-sync-alt"></i> Update</button>
+                <button class="action-btn"><i class="fas fa-user"></i> Login</button>
+            </div>
+            <div id="search-results"></div>
+
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Plant Showcase Section -->
+        <section class="showcase" id="showcase">
+            <h2 class="section-title">Featured Medicinal Plants</h2>
+
+            <button class="scroll-btn left" onclick="scrollShowcase(-1)">&#10094;</button>
+
+            <div class="showcase-grid" id="showcaseGrid">
+                <% for(let item of plants){ %>
+                    <div class="showcase-card">
+                        <div class="showcase-image">
+                            <img src="<%= item.image %>" alt="<%= item.commonName %> Plant">
+                            <div class="showcase-badge">Popular</div>
+                        </div>
+                        <div class="showcase-content">
+                            <h3>
+                                <%= item.plantName %>
+                            </h3>
+                            <div class="showcase-stats">
+                                <span><i class="fas fa-seedling"></i>
+                                    <%= item.commonName %>
+                                </span>
+                                <span><i class="fas fa-globe-asia"></i>
+                                    <%= item.habitat %>
+                                </span>
+                            </div>
+                            <p>
+                                <%= item.medicinalUses %>
+                            </p>
+                            <div class="showcase-actions">
+                                <a href="/learnmore/<%=item._id%>" class="btn btn-learn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+
+            <button class="scroll-btn right" onclick="scrollShowcase(1)">&#10095;</button>
+        </section>
+
+        <!-- Plant Collection Section -->
+        <section class="collection" id="collection">
+            <h2 class="section-title">Plant Collection</h2>
+
+            <div class="collection-tabs">
+                <button class="tab-btn active" data-category="all">All Plants</button>
+                <button class="tab-btn" data-category="medicinal">Medicinal</button>
+                <button class="tab-btn" data-category="aromatic">Aromatic</button>
+                <button class="tab-btn" data-category="culinary">Culinary</button>
+            </div>
+
+            <div class="collection-grid ">
+
+
+                <% for( let item of plants ) { %>
+
+
+                    <div class="collection-card" data-category="<%= item.type %>">
+                        <a href="/learnmore/<%= item._id %>">
+                            <div class="collection-image">
+                                <img src="<%= item.image %>" alt="<%= item.plantName %>">
+                            </div>
+                            <div class="collection-content">
+
+                                <h4>
+                                    <%= item.plantName %>
+                                </h4>
+                                <p>
+                                    <%= item.medicinalUses %>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <% } %>
+
+
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <h2 class="section-title">Why Choose Our Virtual Garden</h2>
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Interactive 3D Models</h3>
+                    <p>Explore plants in 3D with detailed models that you can rotate and zoom for a closer look.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-medical"></i>
+                    </div>
+                    <h3>Medicinal Information</h3>
+                    <p>Comprehensive details about medicinal uses, preparation methods, and dosage guidelines.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Growing Guides</h3>
+                    <p>Learn how to cultivate these medicinal plants in your own garden with our detailed guides.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Forum</h3>
+                    <p>Connect with other herbal enthusiasts, share experiences, and ask questions.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+
+
+        <div class="footer-content">
+
+            <div class="footer-column">
+                <h3>Virtual Herbal Garden</h3>
+                <p>Discover the healing power of nature through our interactive virtual garden. Explore, learn, and
+                    connect with medicinal plants.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/arshlankhan69/" target="_blank"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/arshlankhan69" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/kaifiiiii_/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@arshlankhan69/videos" target="_blank"><i
+                            class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="/store">Store</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <!-- <li><a href="#about">About Us</a></li> -->
+                    <!-- <li><a href="#contact">Contact</a></li> -->
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Garden Street, Green City</p>
+                <p><i class="fas fa-phone"></i> +91 9792622196,+91 9936898062, +91 8795550007</p>
+                <p><i class="fas fa-envelope"></i> herbalgaarden@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Virtual Herbal Garden. All rights reserved. </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function searchPlants() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '';
+
+            if (input) {
+                resultsContainer.innerHTML = `<p>Search results for: <strong>${input}</strong></p>`;
+            }
+        }
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        mobileMenuBtn.addEventListener('click', function () {
+            mobileNav.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+        });
+
+        closeMenuBtn.addEventListener('click', function () {
+            mobileNav.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const collectionCards = document.querySelectorAll('.collection-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.getAttribute('data-category');
+
+                collectionCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const showcaseCards = document.querySelectorAll('.showcase-card');
+            const featureCards = document.querySelectorAll('.feature-card');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            showcaseCards.forEach(card => {
+                observer.observe(card);
+            });
+
+            featureCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        function scrollShowcase(direction) {
+            const container = document.getElementById('showcaseGrid');
+            container.scrollBy({ left: direction * 380, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
