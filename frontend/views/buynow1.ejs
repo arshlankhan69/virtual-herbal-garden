@@ -1,66 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout - Herbal Garden</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="/buynow1.css">
-    
+
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Checkout</h1>
+    <div class="container">
+        <h1>Checkout</h1>
 
-    <form action="/store/placeorder/<%= item._id %>" method="POST">
+        <form action="/store/placeorder/<%= item._id %>" method="POST">
 
-        <!-- Customer -->
-        <label>Full Name</label>
-        <input type="text" name="name" required>
+            <!-- Customer -->
+            <label>Full Name</label>
+            <input type="text" name="name" required>
 
-        <label>Email</label>
-        <input type="email" name="email" required>
+            <label>Email</label>
+            <input type="email" name="email" required>
 
-        <label>Phone</label>
-        <input type="text" name="phone" required>
+            <label>Phone</label>
+            <input type="text" name="phone" required>
 
-        <!-- Address -->
-        <label>Delivery Address</label>
-        <textarea name="address" required></textarea>
+            <!-- Address -->
+            <label>Delivery Address</label>
+            <textarea name="address" required></textarea>
 
-        <!-- Payment -->
-        <label>Payment Method</label>
+            <!-- Payment -->
+            <label>Payment Method</label>
 
-        <div class="payment-choices">
-            <label><input type="radio" name="payment" value="Cash on Delivery" checked> Cash on Delivery</label>
-            <label><input type="radio" name="payment" value="Credit or Debit Card" onclick="showCardDetails()"> Credit / Debit Card</label>
-            <label><input type="radio" name="payment" value="UPI" onclick="hideCardDetails()"> UPI</label>
-        </div>
+            <div class="payment-choices">
+                <label><input type="radio" name="payment" value="Cash on Delivery" checked> Cash on Delivery</label>
+                <label><input type="radio" name="payment" value="Credit or Debit Card" onclick="showCardDetails()">
+                    Credit / Debit Card</label>
+                <label><input type="radio" name="payment" value="UPI" onclick="hideCardDetails()"> UPI</label>
+            </div>
 
-        <!-- Card details -->
-        <div id="card-details">
-            <label>Card Number</label>
-            <input type="text" name="cardnumber">
+            <!-- Card details -->
+            <div id="card-details">
+                <label>Card Number</label>
+                <input type="text" name="cardnumber">
 
-            <label>Expiry Date</label>
-            <input type="text" name="expiry">
+                <label>Expiry Date</label>
+                <input type="text" name="expiry">
 
-            <label>CVV</label>
-            <input type="password" name="cvv">
-        </div>
+                <label>CVV</label>
+                <input type="password" name="cvv">
+            </div>
 
-        <button class="btn" type="submit">Place Order</button>
-    </form>
-</div>
+            <button class="btn" type="submit">Place Order</button>
+        </form>
+    </div>
 
-<script>
-    function showCardDetails() {
-        document.getElementById("card-details").style.display = "block";
-    }
-    function hideCardDetails() {
-        document.getElementById("card-details").style.display = "none";
-    }
-</script>
+    <script>
+        function showCardDetails() {
+            document.getElementById("card-details").style.display = "block";
+        }
+        function hideCardDetails() {
+            document.getElementById("card-details").style.display = "none";
+        }
+    </script>
 
 </body>
+
 </html>

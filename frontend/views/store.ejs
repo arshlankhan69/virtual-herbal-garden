@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store – Virtual Herbal Garden</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/store.css">
 </head>
@@ -72,26 +78,31 @@
     <main>
         <div class="product-grid">
 
-          
-            <%  for(let product of products) { %>
-            <div class="product-card" data-category="<%= product.type %>">
-                <div class="product-img">
-                    <img src="<%= product.image %>" alt="<%= product.plantName %> Plant">
-                </div>
-                <div class="product-info">
-                    <h3><%= product.plantName %> Plant</h3>
-                    <p><%= product.content %></p>
-                    <div class="price">₹<%= product.price %></div>
-                    <div class="product-actions">
-                        <a href="/store/form/<%= product._id %>" class="buy-now">Buy Now</a>
-                        <a href="#" class="add-cart">Add to Cart</a>
+
+            <% for(let product of products) { %>
+                <div class="product-card" data-category="<%= product.type %>">
+                    <div class="product-img">
+                        <img src="<%= product.image %>" alt="<%= product.plantName %> Plant">
+                    </div>
+                    <div class="product-info">
+                        <h3>
+                            <%= product.plantName %> Plant
+                        </h3>
+                        <p>
+                            <%= product.content %>
+                        </p>
+                        <div class="price">₹<%= product.price %>
+                        </div>
+                        <div class="product-actions">
+                            <a href="/store/form/<%= product._id %>" class="buy-now">Buy Now</a>
+                            <a href="#" class="add-cart">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-           <%  } %>
+                <% } %>
 
-            
-            
+
+
 
         </div>
     </main>
@@ -163,4 +174,5 @@
     </script>
 
 </body>
+
 </html>

@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Tour - Virtual Herbal Garden</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -38,12 +45,16 @@
                             <img src="<%= item.image %>" alt="<%= item.plantName %>">
                         </div>
                         <div class="collection-content">
-                            <h4><%= item.plantName %></h4>
-                            <p><%= item.commonName %></p>
+                            <h4>
+                                <%= item.plantName %>
+                            </h4>
+                            <p>
+                                <%= item.commonName %>
+                            </p>
                         </div>
                     </div>
                 </a>
-            <% } %>
+                <% } %>
         </div>
     </main>
 
@@ -53,4 +64,5 @@
         </div>
     </footer>
 </body>
+
 </html>
